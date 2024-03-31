@@ -1,6 +1,8 @@
 ---
 license: mit
 pipeline_tag: object-detection
+language:
+- en
 ---
 ﻿
 # Facial Emotion Detection, Age, and Gender Recognition with OpenCV
