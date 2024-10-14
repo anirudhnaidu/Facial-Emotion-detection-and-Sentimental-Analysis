@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Thu Feb 29 17:46:17 2024
 
+@author: Dhrumit Patel
+"""
 
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
-
+from keras.models import load_model
+from time import sleep
+from keras_preprocessing.image import img_to_array
+from keras_preprocessing import image
 import cv2
 
 import numpy as np
 
-face_classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
-emotion_model = load_model('./emotion_detection_model_50epochs.h5')
-age_model = load_model('./age_model_3epochs.h5')
-gender_model = load_model('Age_and_Gender_Detection/gender_detection_model.h5')
+face_classifier = cv2.CascadeClassifier('pretrained_haarcascade_classifier/haarcascade_frontalface_default.xml')
+emotion_model = load_model('models/emotion_detection_model_50epochs.h5')
+age_model = load_model('models/age_model_3epochs.h5')
+gender_model = load_model('models/gender_model_3epochs.h5')
 
 class_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
 gender_labels = ['Male', 'Female']
