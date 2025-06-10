@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
-
 
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 
 import cv2
-
 import numpy as np
 
 face_classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')

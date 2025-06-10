@@ -8,14 +8,22 @@ import datetime
 from transformers import pipeline  # For sentiment analysis using Hugging Face
 
 # Inject custom CSS for styling
+# Inject custom CSS for styling
 st.markdown("""
     <style>
+    /* Load FontAwesome for social media icons */
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
     /* General Page Styles */
     body {
-        background-color: #f0f2f6;
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9nEdEXHp3l3p-bfAen97ljJToerD2RNdj9SoK-22m6EegKrp2TYw8YE&s'); /* Replace this with a valid image URL or local image */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     h1, h2, h3, h4, h5, h6 {
-        color: #746;
+        color: #000000;  /* Changed heading color to black */
+        font-family: 'Arial', sans-serif;
     }
     .stButton>button {
         background-color: #4CAF50; 
@@ -24,9 +32,10 @@ st.markdown("""
         font-size: 16px;
         border-radius: 8px;
         transition: background-color 0.3s ease;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     }
     .stButton>button:hover {
-        background-color: #45a049;
+        background-color: #808080;
         cursor: pointer;
     }
     .stTextInput>div>input {
@@ -34,35 +43,46 @@ st.markdown("""
         padding: 10px;
         font-size: 16px;
         transition: box-shadow 0.3s ease;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     }
     .stTextInput>div>input:focus {
         box-shadow: 0px 0px 8px 0px rgba(0, 150, 136, 0.8);
     }
     .stTextInput>div>label {
         font-weight: bold;
+        color: #555;
     }
     .stMarkdown p {
-        font-size: 16px;
+        font-size: 18px;
         line-height: 1.6;
         color: #444;
     }
     .stMarkdown h1 {
-        color: #4CAF50;
+        color: #000000;  /* Changed heading color to black */
         font-size: 36px;
         text-align: center;
         margin-bottom: 20px;
+        font-family: 'Segoe UI', sans-serif;
     }
     .stMarkdown h2 {
-        color: #4CAF50;
+        color: #000000;  /* Changed subheading color to black */
         font-size: 28px;
     }
     .footer {
         text-align: center;
         margin-top: 50px;
         color: #777;
+        font-family: 'Verdana', sans-serif;
+    }
+    .stApp {
+        background: rgba(255, 255, 255, 0.8); 
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 2px 2px 20px rgba(0,0,0,0.2);
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Load models
 face_classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
@@ -78,7 +98,7 @@ sentiment_analyzer = pipeline('sentiment-analysis')
 
 # Streamlit app
 st.markdown("<h1>Live Face Detection and Sentiment Analysis</h1>", unsafe_allow_html=True)
-st.write("This app detects face, emotion, gender of a person and predicts the sentiment of input text.")
+st.write("This app detects face, emotion, and gender of a person, and predicts the sentiment of input text.")
 
 # Start/Stop buttons for webcam
 col1, col2 = st.columns([1, 1])
@@ -156,10 +176,10 @@ if user_input:
     # Display the sentiment result
     st.write(f"Sentiment: **{sentiment_label}** (Confidence: {sentiment_score:.2f})")
 
-# Write information file of what does this app do
+# Information Section
 st.header("Information")
 st.markdown("<h1>Facial Emotion Detection, Age, and Gender Recognition with OpenCV</h1>", unsafe_allow_html=True)
-
+st.image("image.jpg", caption="facial analysis system")
 st.write("""
 In this project, a multi-faceted facial analysis system has been implemented, combining state-of-the-art deep learning models with the powerful computer vision library, OpenCV. The system is designed to accurately detect faces in images or video streams and provide insights into facial emotions, age, and gender.
 """)
@@ -181,5 +201,28 @@ The system has practical applications in various fields:
 - Security and surveillance
 """)
 
-# Footer
-st.markdown(f"<div class='footer'>© {datetime.datetime.now().year}.</div>", unsafe_allow_html=True)
+st.markdown("""
+    <div class="footer" style="background-color: #E5E5DF; padding: 10px ">
+        <p>&copy; 2024 Multi-Facial Analysis Project</p>
+        <div class="social-icons">
+            <!-- Increased the icon size to 30px -->
+            <a href="https://www.instagram.com/stories/anirudh_naidu__/" target="_blank" style="width: 30px; height:30px">
+                <i class="fab fa-instagram" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" style="width: 30px; height:30px">
+                <i class="fab fa-facebook" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" style="width: 30px; height:30px">
+                <i class="fab fa-linkedin" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://www.twitter.com/" target="_blank" style="width: 30px; height:30px">
+                <i class="fab fa-twitter" style="font-size: 30px;"></i>
+            </a>
+        </div>
+        <div class="contact">
+            <p>Phone: +91 9703441101</p>
+            <p>Email: EmoTrack@gmail.com</p>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
