@@ -1,4 +1,4 @@
-```markdown
+
 ---
 license: mit
 pipeline_tag: object-detection
@@ -87,4 +87,4 @@ This project demonstrates how deep learning and computer vision can be combined 
 ---
 
 > 📌 For any questions, issues, or contributions, feel free to open an issue or pull request. Let's build smarter systems together!
-```
+
